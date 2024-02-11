@@ -3,7 +3,7 @@
 :custom
 clear custom_choice
 menu Custom Menu
-item --gap This is the first sub menu
+item --gap Custom Options
 item zbm ${space} ZfsBootMenu
 item zbm_recovery ${space} ZfsBootMenu Recovery
 choose custom_choice || goto custom_exit
