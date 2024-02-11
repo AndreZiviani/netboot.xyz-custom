@@ -1,12 +1,26 @@
 #!ipxe
-###
-### netboot.xyz-custom menu
-###
 
-:start
-echo Hello world!
-sleep 10
+:custom
+clear custom_choice
+menu Custom Menu
+item --gap This is the first sub menu
+item zbm ${space} ZfsBootMenu
+item zbm_recovery ${space} ZfsBootMenu Recovery
+choose custom_choice || goto custom_exit
+echo ${cls}
+goto ${custom_choice}
 goto custom_exit
 
+:zbm
+imgfree
+kernel https://get.zfsbootmenu.org/efi
+boot || goto custom_exit
+
+:zbm_recovery
+imgfree
+kernel https://get.zfsbootmenu.org/efi/recovery
+boot || goto custom_exit
+
 :custom_exit
+clear menu
 exit 0
